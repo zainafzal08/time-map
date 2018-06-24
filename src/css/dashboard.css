@@ -1,0 +1,35 @@
+/*
+ * Written by Zain Afzal
+ * 21/6/2018
+ * Box shadow from https://codepen.io/sdthornton/pen/wBZdXq
+ */
+
+ .content {
+   display: flex;
+   justify-content: left;
+   align-items: center;
+   width: 100vw;
+   height: 100vh;
+ }
+
+.groups {
+  width: 33%;
+  height: 98%;
+  margin: 1%;
+  align-content: flex-start;
+}
+
+.title-card {
+  margin-bottom: 2rem;
+}
+.group {
+  height: 90px;
+  width: 100%;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 2rem;
+  margin-bottom:1rem;
+}

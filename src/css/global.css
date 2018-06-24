@@ -1,0 +1,97 @@
+/*
+ * Written by Zain Afzal
+ * 21/6/2018
+ * Box shadow from https://codepen.io/sdthornton/pen/wBZdXq
+ */
+
+ body {
+   margin: 0px;
+ }
+ hr {
+   border: none;
+   outline: none;
+   height: 2px;
+   background-color: #EEE;
+   width: 80%;
+   border-radius: 25px;
+   margin: 0;
+   margin-left: 10%;
+   margin-right: 10%;
+ }
+ .gradient {
+   background: #00C9FF;  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to top, #92FE9D, #00C9FF);  /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to top, #92FE9D, #00C9FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ }
+ .blue {
+   color: rgba(0,201,255,0.8);
+ }
+ .back-blue {
+   background-color: rgba(0,201,255,1);
+ }
+ .green {
+   color: #92FE9D;
+ }
+ .back-green {
+   background-color: #92FE9D;
+ }
+
+.card {
+  background-color: rgba(255,255,255,1);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.sub-card {
+  background-color: rgba(255,255,255,1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.16), 0 1px 4px rgba(0,0,0,0.23);
+}
+.card .section {
+  width: 100%;
+}
+
+
+.brand {
+  font-family: 'Comfortaa', cursive;
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: #444;
+}
+
+.subtitle {
+  font-family: 'Montserrat', sans-serif;
+  color: #BBB;
+  font-size: 0.9rem;
+}
+
+.title {
+  font-family: 'Montserrat', sans-serif;
+  color: #777;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  font-size: 0.875em;
+  text-align: center;
+  border: none;
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem 1.1rem;
+  border-radius: 1.078em;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn:focus {
+  border: none;
+  text-decoration: none;
+  outline: none;
+}
+
+.btn:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
+}
