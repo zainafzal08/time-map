@@ -6,35 +6,13 @@
       </div>
       <div class="card events">
         <div class="card-title">Events</div>
+        <br>
+
       </div>
     </div>
     <div class="row">
       <div class="groups">
-        <div v-for="group in groups" class="card group">
-          <div class="header">
-            <h1 class="title"> {{group.name}} </h1>
-            <hr>
-            <div class="group-stats">
-              <div><i class="mdi mdi-clock"></i>{{group.stats.upcomingEvents}}</div>
-              <div><i class="mdi mdi-chart-line"></i>{{group.stats.totalEvents}}</div>
-              <div><i class="mdi mdi-account"></i>{{group.stats.members}}</div>
-            </div>
-          </div>
-          <div v-if="group.members.length < 5" class="content">
-            <img v-for="m in group.members" class="member" :src="m.imgSrc"></img>
-          </div>
-          <div v-else class="content">
-            <img v-for="m in group.members.slice(0,4)" class="member" :src="m.imgSrc"></img>
-
-          </div>
-          <div class="footer">
-            <div class="btns">
-              <button class="card-btn btn-red"> Leave </button>
-              <button class="card-btn"> Open </button>
-            </div>
-          </div>
-        </div>
-
+        <Group v-for="group in groups" :key="group.id" :group="group"></Group>
         <div class="card new-group">
           <span> + </span>
         </div>
@@ -44,13 +22,17 @@
 </template>
 
 <script>
+import Group from './Group.vue'
+
 export default {
   name: 'Dashboard',
+  components: {Group},
   data () {
     return {
       groups: [
         {
           "name": "Zodiac Killers",
+          "id": 1,
           "members": [
             {"imgSrc":"http://s3.amazonaws.com/projects-assets/ted/images/ted-cruz.jpg"},
             {"imgSrc":"http://lanetadurango.com/wp-content/uploads/2016/05/08-ted-cruz.w529.h529.jpg"},
@@ -112,72 +94,6 @@ export default {
   margin: 2%;
   display: flex;
   flex-direction: row;
-}
-
-.group {
-  width: 250px;
-  height: 200px;
-  margin-right: 2rem;
-}
-
-.group .header {
-  width: 100%;
-  height: 50%;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-}
-.group .group-stats {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  color: #BBB;
-  font-size: 1rem;
-  font-family: 'Montserrat', sans-serif;
-  width: 80%;
-  margin-left: 10%;
-  margin-top: 1rem;
-}
-.group .group-stats i {
-  margin-right: 0.5rem;
-}
-.group .content {
-  width: 100%;
-  height: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.group .content i{
-  margin-left: 1rem;
-  color: #BBB;
-  font-size: 1.5rem;
-}
-.group .content .member {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  opacity: 0.8;
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
-  border: 2px solid #BBB;
-}
-.group .footer {
-  background-color: rgb(245,245,245);
-  width: 100%;
-  height: 20%;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  display: flex;
-  align-items: center;
-}
-
-.group .footer .btns {
-  width: 90%;
-  margin-left: 5%;
-  margin-right: 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .new-group {

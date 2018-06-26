@@ -1,3 +1,8 @@
+# bits and bops
+
+1. make buttons on group card nicer (maybe take out background change on hover)
+2.
+
 # functionality
 
 1. make group
