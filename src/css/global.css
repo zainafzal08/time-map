@@ -59,7 +59,7 @@
   opacity: 0.9;
   background-color: rgba(0,0,0,0);
   color: #00C9FF;
-
+  cursor: pointer;
   font-size: 0.8rem;
   padding-left: 0.7rem;
   padding-right: 0.7rem;
@@ -67,6 +67,9 @@
 .card-btn:hover{
   background-color: #00C9FF;
   color:white;
+}
+.card-btn:focus{
+  outline: none;
 }
 .btn-red {
   color: #e44232;

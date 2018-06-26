@@ -1,7 +1,6 @@
 from flask import Flask
 import os
 import base64
-from Models import User
 
 app = Flask(__name__)
 app.secret_key = base64.b64encode(os.urandom(24)).decode("utf-8")
