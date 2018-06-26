@@ -6,7 +6,7 @@
 4. update availability
 5. lock in event (keep track of events so you can remove the times from availability + show stats)
 6. dashboard showing upcoming events / groups
-
+7. group creator should be able to kill a group
 
 # Pages
 
