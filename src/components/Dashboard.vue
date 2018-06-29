@@ -2,12 +2,11 @@
   <div class="dashboard-content">
     <div class="row">
       <div class="card availability">
-        <div class="card-title card-title-left">Availability</div>
+        <Calendar month="may" year="2018"></Calendar>
       </div>
       <div class="card events">
         <div class="card-title">Events</div>
         <br>
-
       </div>
     </div>
     <div class="row">
@@ -23,10 +22,11 @@
 
 <script>
 import Group from './Group.vue'
+import Calendar from './Calendar.vue'
 
 export default {
   name: 'Dashboard',
-  components: {Group},
+  components: {Group,Calendar},
   data () {
     return {
       groups: [
