@@ -1,7 +1,11 @@
 # bits and bops
 
 1. make buttons on group card nicer (maybe take out background change on hover)
-2.
+2. remember! get it working and you can update design after a beta version is out
+
+# restructure
+
+1. Shift each calender cell into it's own component (getting too complex)
 
 # functionality
 

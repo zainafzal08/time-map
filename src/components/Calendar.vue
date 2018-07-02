@@ -13,8 +13,8 @@
       </div>
       <div v-for="i in 5" class="data-row">
           <div v-for="j in 7" class="table-data">
-            <div v-if="validDate(i,j)">
-              <div class="date">{{getDate(i,j)}}<i v-if="eventOn(i,j)" class="mdi mdi-checkbox-blank-circle event-tag"></i></div>
+            <div class="cell-wrapper" v-if="validDate(i,j)" >
+              <Day :date="getDate(i,j)" :heat="getHeat(i,j)"></Day>
             </div>
           </div>
       </div>
@@ -23,6 +23,9 @@
 </template>
 
 <script>
+
+import Day from './Day.vue'
+
 export default {
   name: 'Calendar',
   props: ['month','year'],
@@ -30,11 +33,44 @@ export default {
     return {
       'monthStartDay': 4, // 0 = mon 6 = sun
       'daysInMonth': 30,
-      'eventData': {
-        'may': [null,null,null,null,null]
+      'heatData': {
+        'may': [
+          [1,0.6,1,1,0.5,1,1,0.5,1,1,1,0,0,0,0,1,1,1,0.1,1,1,1,1,1],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        ]
       }
     }
   },
+  components: {Day},
   methods : {
     getDate: function(i,a) {
       return (this.monthStartDay*-1)+(i-1)*7+a;
@@ -45,9 +81,9 @@ export default {
       if (d > this.daysInMonth) return false;
       return true;
     },
-    eventOn: function(i,a) {
-      if (this.eventData[this.month][0]) return true;
-      return false;
+    getHeat: function(i,a) {
+      var d = this.getDate(i,a);
+      return this.heatData[this.month][d-1];
     }
   }
 }
@@ -72,7 +108,7 @@ export default {
 .cal .row {
   width: 100%;
   height: 10%;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
   display: flex;
   flex-direction: row;
 }
@@ -91,31 +127,23 @@ export default {
   width: calc(100% / 7);
   font-family: 'Comfortaa', cursive;
   color: #00C9FF;
-  text-align: left;
+  text-align: center;
 }
-.cal .table-heading span {
-  margin-left:1rem;
-}
+
 .cal .table-data {
   width: calc(100% / 7);
   font-family: 'Comfortaa', cursive;
   color: #BBB;
   height: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
 }
-.cal .table-data .date {
-  width: 10%;
-  margin-left: 1rem;
-  height: 100%;
-  font-size: 0.6rem;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-.cal .event-tag {
-  margin-left: 0.3rem;
-  color: #e44232;
+.cal .table-data .cell-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>
