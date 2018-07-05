@@ -2,13 +2,12 @@
   <div class="day" v-on:mouseover="expand" v-on:mouseleave="collapse">
     <div class="date"> {{date}} </div>
     <svg class="day-stats" :width="this.statSize+'rem'" :height="this.statSize+'rem'" viewBox="0 0 110 110">
-      <g v-for="i in 24" :transform="'rotate('+(15*(i-1))+' 55 55)'">
+      <g v-for="i in segNum" :transform="'rotate('+(15*(i-1))+' 55 55)'">
         <linearGradient :id="'linearColors'+i+'-'+date">
           <stop offset="0%" :stop-color="getColor(i-2)"></stop>
-          <stop offset="50%" :stop-color="getColor(i-1)"></stop>
           <stop offset="100%" :stop-color="getColor(i-1)"></stop>
         </linearGradient>
-        <path :fill="getColor(i-1)" :stroke="'url(#linearColors'+i+'-'+date+')'" :stroke-width="statThickness" d="M 55 5 A 50 50 0 0 1 67.9410 6.7037">
+        <path :fill="getColor(i-1)" :stroke="'url(#linearColors'+i+'-'+date+')'" :stroke-width="statThickness" v-bind:d="path">
         </path>
       </g>
     </svg>
@@ -24,7 +23,9 @@ export default {
       expanded: false,
       statOpacity: 0.7,
       statSize: 3,
-      statThickness: 3
+      statThickness: 3,
+      segNum: 24,
+      path: "M 55 5 A 50 50 0 0 1 67.9410 6.7037"
     }
   },
   methods : {
