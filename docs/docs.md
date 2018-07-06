@@ -3,13 +3,11 @@
 1. make buttons on group card nicer (maybe take out background change on hover)
 2. remember! get it working and you can update design after a beta version is out
 
-# thought dump 
+# thought dump
 
 1. add some indiication of time on the cirular day stats
 2. make the pop up for circular day stat be cooler like a unfurl from a small top right arc
-# restructure
 
-1. Shift each calender cell into it's own component (getting too complex)
 
 # functionality
 
@@ -33,9 +31,8 @@
 1. Join group
 2. Make group
 3. Upcomming events
-4. previous events
-5. go to group
-6. update availability
+4. go to group
+5. update availability
 
 #### group
 

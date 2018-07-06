@@ -11,9 +11,11 @@
     </div>
     <div v-if="group.members.length < 5" class="content">
       <img v-for="m in group.members" class="member" :src="m.imgSrc"></img>
+      <div @click="showModal('groupInviteLink',group.inviteLink)" class="member invite-link"></div>
     </div>
     <div v-else class="content">
       <img v-for="m in group.members.slice(0,4)" class="member" :src="m.imgSrc"></img>
+      <div @click="showModal('groupInviteLink',group.inviteLink)" class="member invite-link"><span>+</span></div>
     </div>
     <div class="footer">
       <div class="btns">
@@ -27,7 +29,7 @@
 <script>
 export default {
   name: 'Group',
-  props: ['group'],
+  props: ['group','showModal'],
   data () {
     return {}
   }
@@ -81,7 +83,6 @@ export default {
   border-radius: 50%;
   opacity: 1;
   margin-left: -10px;
-
 }
 .group .footer {
   width: 100%;
@@ -100,5 +101,17 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.group .content .invite-link {
+  background-color: #00C9FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+}
+.group .content .invite-link:hover {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.16), 0 1px 4px rgba(0,0,0,0.23);
 }
 </style>

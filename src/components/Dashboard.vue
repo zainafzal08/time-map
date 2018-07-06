@@ -1,19 +1,23 @@
 <template>
-  <div class="dashboard-content">
-    <div class="row">
-      <div class="card availability">
-        <Calendar month="may" year="2018"></Calendar>
+  <div>
+    <newGroupModal :isActive="modalActive" :kill="hideModal" id="newGroup"></newGroupModal>
+    <div class="dashboard-content">
+      <div class="row">
+        <div class="card availability">
+          <Calendar month="may" year="2018"></Calendar>
+        </div>
+        <div class="card events">
+          <div class="card-title">Events</div>
+          <br>
+          <!--<Event v-for="e in events"  :key="e.id" :event="e"></Event>-->
+        </div>
       </div>
-      <div class="card events">
-        <div class="card-title">Events</div>
-        <br>
-      </div>
-    </div>
-    <div class="row">
-      <div class="groups">
-        <Group v-for="group in groups" :key="group.id" :group="group"></Group>
-        <div class="card new-group">
-          <span> + </span>
+      <div class="row">
+        <div class="groups">
+          <Group v-for="group in groups" :key="group.id" :group="group" :showModal="showModal"></Group>
+          <div class="card new-group" @click="showModal('newGroup')">
+            <span> + </span>
+          </div>
         </div>
       </div>
     </div>
@@ -23,30 +27,56 @@
 <script>
 import Group from './Group.vue'
 import Calendar from './Calendar.vue'
+import newGroupModal from './newGroupModal.vue'
 
 export default {
   name: 'Dashboard',
-  components: {Group,Calendar},
+  components: {Group,Calendar,newGroupModal},
   data () {
     return {
+      modals: {
+        newGroup: {
+          active: false
+        },
+        groupInviteLink: {
+          active: false
+        }
+      },
       groups: [
         {
           "name": "Zodiac Killers",
           "id": 1,
           "members": [
-            {"imgSrc":"http://s3.amazonaws.com/projects-assets/ted/images/ted-cruz.jpg"},
-            {"imgSrc":"http://lanetadurango.com/wp-content/uploads/2016/05/08-ted-cruz.w529.h529.jpg"},
-            {"imgSrc":"http://brewminate.com/wp-content/uploads/2016/03/Cruz06.jpg"},
-            {"imgSrc":"http://brewminate.com/wp-content/uploads/2016/03/Cruz06.jpg"},
-            {"imgSrc":"http://brewminate.com/wp-content/uploads/2016/03/Cruz06.jpg"}
+            {"imgSrc":"/static/imgs/cruz.jpg"},
+            {"imgSrc":"/static/imgs/cruz.jpg"},
+            {"imgSrc":"/static/imgs/cruz.jpg"},
+            {"imgSrc":"/static/imgs/cruz.jpg"},
+            {"imgSrc":"/static/imgs/cruz.jpg"}
           ],
           "stats": {
             "upcomingEvents": 3,
             "totalEvents": 6,
             "members": 3
-          }
+          },
+          "inviteLink": "www.lolfuckyou.com"
         }
+      ],
+      events: [
+        {id: 1}
       ]
+    }
+  },
+  methods: {
+    showModal: function(m){
+      document.body.style.overflow = 'hidden';
+      this.modals[m].active = true;
+    },
+    hideModal: function(m){
+      document.body.style.overflow = 'scroll';
+      this.modals[m].active = false;
+    },
+    modalActive: function(m){
+      return this.modals[m].active;
     }
   }
 }
