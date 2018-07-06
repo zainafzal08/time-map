@@ -20,7 +20,7 @@
 <script>
 export default {
   name: 'newGroupModal',
-  props: ["isActive","kill","id"],
+  props: ["grabData","isActive","kill","id"],
   data () {
     return {}
   },

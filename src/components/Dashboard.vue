@@ -1,6 +1,7 @@
 <template>
   <div>
-    <newGroupModal :isActive="modalActive" :kill="hideModal" id="newGroup"></newGroupModal>
+    <groupInviteModal :grabData="modalData" :isActive="modalActive" :kill="hideModal" id="groupInviteLink"></groupInviteModal>
+    <newGroupModal :grabData="modalData" :isActive="modalActive" :kill="hideModal" id="newGroup"></newGroupModal>
     <div class="dashboard-content">
       <div class="row">
         <div class="card availability">
@@ -8,8 +9,10 @@
         </div>
         <div class="card events">
           <div class="card-title">Events</div>
-          <br>
-          <!--<Event v-for="e in events"  :key="e.id" :event="e"></Event>-->
+          <br><hr><br>
+          <div class="events-content">
+            <Event v-for="e in events"  :key="e.id" :event="e"></Event>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -28,18 +31,22 @@
 import Group from './Group.vue'
 import Calendar from './Calendar.vue'
 import newGroupModal from './newGroupModal.vue'
+import groupInviteModal from './groupInviteModal.vue'
+import Event from './Event.vue'
 
 export default {
   name: 'Dashboard',
-  components: {Group,Calendar,newGroupModal},
+  components: {Group,Calendar,newGroupModal,groupInviteModal,Event},
   data () {
     return {
       modals: {
         newGroup: {
-          active: false
+          active: false,
+          data: null
         },
         groupInviteLink: {
-          active: false
+          active: false,
+          data: null
         }
       },
       groups: [
@@ -67,9 +74,10 @@ export default {
     }
   },
   methods: {
-    showModal: function(m){
+    showModal: function(m,d){
       document.body.style.overflow = 'hidden';
       this.modals[m].active = true;
+      this.modals[m].data = d;
     },
     hideModal: function(m){
       document.body.style.overflow = 'scroll';
@@ -77,6 +85,9 @@ export default {
     },
     modalActive: function(m){
       return this.modals[m].active;
+    },
+    modalData: function(m){
+      return this.modals[m].data;
     }
   }
 }
@@ -113,7 +124,15 @@ export default {
   height: 70vh;
   margin: 2%;
 }
-
+.events-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 80%;
+  padding-left: 10%;
+  padding-right: 10%
+}
 .seperator {
   width: 96%;
   margin: 2%;

@@ -2,11 +2,13 @@
 
 1. make buttons on group card nicer (maybe take out background change on hover)
 2. remember! get it working and you can update design after a beta version is out
+3. make sure on vue switch a reset function is called that unlocks scroll in case a modal was up.
+4. add some indiication of time on the cirular day stats
+5. make the pop up for circular day stat be cooler like a unfurl from a small top right arc
+6. have events summary also show events from facebook [stretch]
 
-# thought dump
+# Immediate todo
 
-1. add some indiication of time on the cirular day stats
-2. make the pop up for circular day stat be cooler like a unfurl from a small top right arc
 
 
 # functionality
@@ -50,7 +52,6 @@
 
 1. make event (modal)
 2. see event (small div / component + modal with info which pops up on click)
-3. [stretch goal] have events from fb
 
 #### Update Availability
 
