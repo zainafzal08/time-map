@@ -9,7 +9,11 @@
 
 # Immediate todo
 
-
+1. make api work with groups + calendar
+2. make calendar update modal + make it work
+3. get event list to work
+4. get events to work with calendar
+5. set up group page
 
 # functionality
 
@@ -19,7 +23,7 @@
 4. update availability
 5. lock in event (keep track of events so you can remove the times from availability + show stats)
 6. dashboard showing upcoming events / groups
-7. group creator should be able to kill a group
+7. group creator should be able to kill a group (replace leave with kill for leader)
 
 # Pages
 

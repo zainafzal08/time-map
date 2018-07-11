@@ -5,7 +5,7 @@
     <div class="dashboard-content">
       <div class="row">
         <div class="card availability">
-          <Calendar month="may" year="2018"></Calendar>
+          <Calendar></Calendar>
         </div>
         <div class="card events">
           <div class="card-title">Events</div>
@@ -17,7 +17,7 @@
       </div>
       <div class="row">
         <div class="groups">
-          <Group v-for="group in groups" :key="group.id" :group="group" :showModal="showModal"></Group>
+          <Group v-for="group in groups" :key="group.id" :group="group" :showModal="showModal" :user="user"></Group>
           <div class="card new-group" @click="showModal('newGroup')">
             <span> + </span>
           </div>
@@ -49,16 +49,20 @@ export default {
           data: null
         }
       },
+      user: {
+        "id": 0
+      },
       groups: [
         {
           "name": "Zodiac Killers",
           "id": 1,
+          "creator": 1,
           "members": [
-            {"imgSrc":"/static/imgs/cruz.jpg"},
-            {"imgSrc":"/static/imgs/cruz.jpg"},
-            {"imgSrc":"/static/imgs/cruz.jpg"},
-            {"imgSrc":"/static/imgs/cruz.jpg"},
-            {"imgSrc":"/static/imgs/cruz.jpg"}
+            {"id": 1,"imgSrc":"/static/imgs/cruz.jpg"},
+            {"id": 2,"imgSrc":"/static/imgs/cruz.jpg"},
+            {"id": 3,"imgSrc":"/static/imgs/cruz.jpg"},
+            {"id": 4,"imgSrc":"/static/imgs/cruz.jpg"},
+            {"id": 5,"imgSrc":"/static/imgs/cruz.jpg"}
           ],
           "stats": {
             "upcomingEvents": 3,
@@ -115,13 +119,13 @@ export default {
 
 .availability {
   width: 66%;
-  height: 70vh;
+  height: 80vh;
   margin: 2%;
 }
 
 .events {
   width: 26%;
-  height: 70vh;
+  height: 80vh;
   margin: 2%;
 }
 .events-content {

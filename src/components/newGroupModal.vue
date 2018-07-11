@@ -87,7 +87,7 @@ export default {
    height: 13%;
    margin-left: 5%;
    margin-right: 5%;
-   margin-bottom: 2%;
+   margin-bottom: 4%;
    display: flex;
    justify-content: space-around;
    align-items: center;
@@ -99,9 +99,10 @@ export default {
    justify-content: center;
    flex-direction: row;
    width: 90%;
-   height: 85%;
+   height: 81%;
    margin-left: 5%;
    margin-right: 5%;
+   margin-top: 4%;
  }
  .group-title-icon {
    font-size: 2rem;

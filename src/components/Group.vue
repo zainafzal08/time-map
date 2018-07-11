@@ -19,7 +19,10 @@
     </div>
     <div class="footer">
       <div class="btns">
-        <button class="card-btn btn-red"> Leave </button>
+        <button class="card-btn btn-red">
+          <span v-if="user.id == group.creator">Kill</span>
+          <span v-else >Leave</span>
+        </button>
         <button class="card-btn"> Open </button>
       </div>
     </div>
@@ -29,7 +32,7 @@
 <script>
 export default {
   name: 'Group',
-  props: ['group','showModal'],
+  props: ['group','showModal','user'],
   data () {
     return {}
   }

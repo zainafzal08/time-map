@@ -1,7 +1,7 @@
 <template>
   <div class="day" v-on:mouseover="expand" v-on:mouseleave="collapse">
     <div class="date"> {{date}} </div>
-    <svg class="day-stats" :width="this.statSize+'rem'" :height="this.statSize+'rem'" viewBox="0 0 110 110">
+    <svg v-show="visible" class="day-stats" :width="this.statSize+'rem'" :height="this.statSize+'rem'" viewBox="0 0 110 110">
       <g v-for="i in segNum" :transform="'rotate('+(15*(i-1))+' 55 55)'">
         <linearGradient :id="'linearColors'+i+'-'+date">
           <stop offset="0%" :stop-color="getColor(i-2)"></stop>
@@ -17,7 +17,7 @@
 <script>
 export default {
   name: 'Day',
-  props: ['date','heat'],
+  props: ['date','heat','visible'],
   data () {
     return {
       expanded: false,
